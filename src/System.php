@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Wherd\Foundation;
 
+use Closure;
+
 class System
 {
     protected static self $instance;
@@ -105,7 +107,7 @@ class System
 
         $object = $this->providers[$name];
 
-        if (is_object($object)) {
+        if (is_object($object) && !($object instanceof Closure)) {
             return $object;
         }
 
