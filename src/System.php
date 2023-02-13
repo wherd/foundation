@@ -105,6 +105,10 @@ class System
 
         $object = $this->providers[$name];
 
+        if (is_object($object)) {
+            return $object;
+        }
+
         if (is_callable($object)) {
             $this->providers[$name] = $object();
         }
